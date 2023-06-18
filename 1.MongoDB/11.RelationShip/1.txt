@@ -1,0 +1,107 @@
+- Relation is a way how one Document interact with another Document.
+
+# 1st way:
+    # Category Collection:
+        - {
+            _id: ObjectId("001")
+            category_name: "Summer",
+            products: {
+                [
+                    {
+                        _id: ObjectId("101")
+                        product_name: "Shorts",
+                    }
+                ]
+            }
+        }
+
+# 2nd way:
+    # Category Collection Documents:
+        - {
+            _id: ObjectId("001")
+            category_name: "Summer",
+            products: {
+                [id1,id2]
+            }
+          }
+        - {
+            _id: ObjectId("001")
+            category_name: "Winter",
+            products: {
+                [id3]
+            }
+          }
+    # Product Collection Documents
+        - {
+            _id: id1,
+            product_name: "Shorts",
+          }
+        - {
+            _id: id2,
+            product_name: "T-shirt",
+          }
+        - {
+            _id: id3,
+            product_name: "Jacket",
+          }
+
+- Relation structure depends upon Project demand.
+
+- Model Relationships Between Documents: (Embedded Document VS References Document)
+    - Model One-to-One Relationships with Embedded Documents
+    - Model One-to-Many Relationships with Embedded Documents
+    - Model One-to-Many Relationships with Document References
+
+- Embedding connected data in a single document can reduce the number of read operations required to obtain data.
+
+- Document Relation Pattern:
+    - Embedded Document Pattern
+        - Subset Pattern
+    - Reference Document Pattern
+        - where to store reference.
+
+Q. When to use Reference and when to use Embedded?
+    Q. When to use SubSet Pattern in Embedded?
+Q. When to use Reference and when to use Embedded?
+    Q. Where to store reference?
+
+Q. What I did in Category and Product falls under what pattern?
+
+- Proper MongoDB Scalable Schema Design, on the basis of data access patterns.
+
+Q. Product and Categoty Relation:
+
+    # 1. Product Schema
+      {
+        name:'xxxx',
+        price:xxxxx,
+        category:
+        {
+          categoryName:'xxxxx' # category name
+
+        }
+      }
+
+    # 2. Category Schema
+      {
+       name:'categoryName',
+       products:[
+                 {
+                  name:'xxxx',
+                  price:xxxxx
+                  },
+                   {
+                  name:'xxxx',
+                  price:xxxxx
+                  }
+                ] #array or products
+      }
+
+    - Reference: https://stackoverflow.com/questions/31301990/how-to-design-product-category-and-products-models-in-mongodb
+    - https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-3
+
+
+
+
+- Type of Data Modelling.
+- stand-alone entities.

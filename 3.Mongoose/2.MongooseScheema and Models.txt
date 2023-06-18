@@ -1,0 +1,88 @@
+# Mongoose schema
+    - A mongoose schema defines the sructure of the document.
+    - A mongoose schema helps us to get default values, validators, etc.
+
+    > A mongoose schema defines the sructure.
+        const songDetialSchema = new mongooseObj.Schema({
+            name: String,
+            singer: String,
+            date: Date
+        })
+
+    > A mongoose schema helps to get default values.
+        const songDetialSchema = new mongooseObj.Schema({
+            name: String,
+            singer: String,
+            date: {
+                type: Date,
+                default: Date.now
+            }
+        })
+
+    > A mongoose schema helps to get validators.
+        const songDetialSchema = new mongooseObj.Schema({
+            name: String,
+            singer: String,
+            date: {
+                type: Date,
+                default: Date.now,
+                require: true
+            }
+        })
+
+    > A mongoose schema is the data structure of document that is to be added into collection of MongoDB.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+# Mongoose model
+    - A mongoose model is a wrapper on the Mongoose schema.
+    - A mongoose model provides an interface to database for CURD records.
+    - A mongoose model is a file that consist of Mongoose schema.
+
+# Perform CURD operation on MongoDB with the help of models in node&express.
+# Creating models means creating collection.
+
+-----------------------------------------------------------------------------------------
+
+
+const mongooseObj = require('mongoose'); // returns mongoose object
+const { update } = require('../../3.Blog/models/articleModel');
+
+// 1.Creates or Activate existing Database:
+mongooseObj.connect("mongodb://localhost:27017/SongDataBase") // returns a promise: means provide output in future // deprecation error
+.then(() => console.log("Connection established !"))
+.catch((error) => console.log("Connection fails !!! :", error))
+
+// 2.Define the structure of document.
+// Mongoose Schema:
+const songDetialSchema = new mongooseObj.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    singer: String,
+    view: Number,
+    trend: Boolean,
+    date: {
+        type: Date,
+        default: Date.now
+    }
+})
+
+# 3.Create Model for Collection:
+const PlayList = new mongooseObj.model("PlayListCollection", songDetialSchema);
+
+# document   ==> songDetialSchema ==> object, instance ==> Schema({document key:vale pair})
+# Collection ==> PlayList         ==> class            ==> model("collectionName", Schema)
+
+// We have defined database, schema, collecttion now all we need is to create/insert/add document.
+// Later we can retrive, update, delete that document.
+
+
+------------------------------------------------------------------------------------------------------
+
+- MongoDB DB,Collection,documents.
+- Mongoose Schema
+- Mongoose Model Class
+- Model Object| Document
+------------------------------------------------------------------------------------------------------

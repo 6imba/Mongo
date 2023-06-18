@@ -1,0 +1,17 @@
+# NoSQL Database.
+	- NoSQL Database is a non-relational Data Management System.
+  - that does not require a fixed schema.
+	- It avoids joins, and is easy to scale.
+
+# SQL vs NoSQL Database.
+  - SQL databases are primarily called as Relational Databases (RDBMS).
+      whereas
+  - NoSQL database are primarily called as non-relational or distributed database.
+
+  - PostGrels SQL: Database, Table, Row, Column
+  - MongoDB NoSQL: Database, Collection, Document, Fields
+
+  - Instead of tables, a MongoDB database stores its data in collections.
+  - A collection holds one or more BSON documents.
+  - Documents are analogous to records or rows in a relational database table.
+

@@ -1,0 +1,98 @@
+# Collection with two document:
+
+{
+        "_id" : ObjectId("61e8eeda27b7251b54342b2e"),
+        "collection_name" : "Summer Wear",
+        "products" : [
+                {
+                        "name" : "Half Pant",
+                        "price" : 1300
+                },
+                {
+                        "name" : "T-shirt",
+                        "price" : 1450
+                }
+        ]
+}
+{
+        "_id" : ObjectId("61e8ef2227b7251b54342b2f"),
+        "collection_name" : "Winter Wear",
+        "products" : [
+                {
+                        "name" : "Woolen Trouser",
+                        "price" : 1500
+                },
+                {
+                        "name" : "Sweater",
+                        "price" : 1750
+                }
+        ]
+}
+
+
+# find operation:
+    - db.myTestCollection1.findOne( {collection_name: "Winter Wear"} ) ==> find selective collection
+    - db.myTestCollection1.findOne( {collection_name: "Winter Wear", "products.name": "Sweater" } ) ==> find selective collection with selective nested document.
+    - db.myTestCollection1.findOne( { "products.name": "T-shirt" } )
+    - db.myTestCollection1.find( { "products.name": "T-shirt" } )
+
+# update operation:
+    - db.myTestCollection1.updateOne( { "products.name": "T-shirt" }, {$set: { "products.$.price": 1300 }} )
+
+
+{
+        "_id" : ObjectId("61e8eeda27b7251b54342b2e"),
+        "collection_name" : "Summer Wear",
+        "products" : [
+                {
+                        "name" : "Half Pant",
+                        "price" : 1300
+                },
+                {
+                        "name" : "T-shirt",
+                        "price" : 1300
+                }
+        ]
+}
+{
+        "_id" : ObjectId("61e8ef2227b7251b54342b2f"),
+        "collection_name" : "Winter Wear",
+        "products" : [
+                {
+                        "name" : "Woolen Trouser",
+                        "price" : 1500
+                },
+                {
+                        "name" : "Sweater",
+                        "price" : 1750
+                }
+        ]
+}
+{
+        "_id" : ObjectId("61e8f15927b7251b54342b30"),
+        "collection_name" : "Autume Wear",
+        "products" : [
+                {
+                        "name" : "Rain Coat",
+                        "price" : 1500
+                },
+                {
+                        "name" : "Boot ",
+                        "price" : 1750
+                },
+                {
+                        "name" : "Sweater",
+                        "price" : 1750
+                }
+        ]
+}
+
+- db.myTestCollection1.updateOne( { "products.name": "Sweater" }, {$set: { "products.$.price": 1775 }} )
+    ==> { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+- db.myTestCollection1.updateOne( { "products.name": "Sweater" }, {$set: { "products.$.price": 1775 }} )
+    ==> { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 0 }
+- db.myTestCollection1.update( { "products.name": "Sweater" }, {$set: { "products.$.price": 1775 }} )
+    ==> WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+- db.myTestCollection1.updateMany( { "products.name": "Sweater" }, {$set: { "products.$.price": 1775 }} )
+    ==> { "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 1 }
+

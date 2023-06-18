@@ -1,0 +1,97 @@
+*** mongo ***
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Create:
+    1. Create database if not exist               > use DatabaseName
+    2. Open and work on active Database if exist  > use DatabaseName
+    3. Create a collection                        > db.CollectionName
+    4. Create collection with validation rule:    > db.createCollection("myCollectionName", {
+                                                        validator:{
+                                                            $jsonSchema:{
+                                                                bsonType:"object",
+                                                                required:["name", "age"],
+                                                                properties:{
+                                                                    name:{
+                                                                    bsonType:"string",
+                                                                    description:"Must be string and required."
+                                                                    },
+                                                                    age:{
+                                                                    bsonType:"int",
+                                                                    description:"Must be an Integer and required."
+                                                                    },
+                                                                    graduated:{
+                                                                    bsonType:"bool",
+                                                                    description:"Must be an booelan."
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    })
+    4. Create collection with validation rule One_Line:
+        > db.createCollection("myCollectionName", {validator:{$jsonSchema:{bsonType:"object",required:["name", "age"],properties:{name:{bsonType:"string",description:"Must be string and required."},age:{bsonType:"int",description:"Must be an Integer and required."},graduated:{bsonType:"bool",description:"Must be an booelan."}}}}})
+
+
+# Create or Insert:
+    5. Insert one document into a collection          > db.simbaCollection.insertOne({ name: "ReactJS", type: "Front End", status: false, experience: null })
+    6. Insert many documents into a collection        > db.simbaCollection.insertMany([{ name: "Php", type: "BackEnd", status: true, experience: 6 }, { name: "Python", type: "BackEnd", status: true, experience: 7 }])
+        - insertOne takes one document_object.
+        - insertMany takes one array of document_object.
+        > insert BSON data with automatic generated id(insertedId) into collection.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Retrive:
+  7. See all Databases                  > show dbs
+      - show dbs command will show the database name only if that particular database has collection and at least one document inside that collection.
+  8. See the active database                                    > db
+  9. See the collection in active db                            > show collections
+  10. See documents inside the collection of active db           > db.simbaCollection.find()
+  11. See one document inside the collection of active db        > db.simbaCollection.findOne()
+  12. See documents inside the collection of active db          > db.simbaCollection.find().pretty()
+  13. See numbers documents inside the collection of active db  > db.simbaCollection.find().pretty().length()
+  14. See length function defination                            > db.simbaCollection.find().pretty().length
+  15. See particular document                                   > db.simbaCollection.find({name: "Php"})
+      - db.simbaCollection.find(query, projection)
+  16. See particular document with particular fields            > db.simbaCollection.find({name: "Php"}, {name:1})
+  17. See particular document without particular fields         > db.simbaCollection.find({name: "Php"}, {name:0})
+  18. See particular document limit                             > db.simbaCollection.find({status: "true"}).limit(2)
+  19. See particular document limit                             > db.simbaCollection.find({status: "true"}).limit(1)
+  20. See particular document limit                             > db.simbaCollection.findOne({status: "true"})
+  21. skip document                                             > db.simbaCollection.find({status: "true"}).limit(3).skip(2)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Update:
+    syntax:
+        - db.COLLECTION_NAME.updateOne(<filter>, <update>) => updates the first matched filtered document.
+        - db.COLLECTION_NAME.updateMany(<filter>, <update>) => updates the all matched filtered document.
+
+  22. db.simbaCollection.updateOne({name: "Php"}, {$set: {name: "PHP"}})
+  23. db.simbaCollection.updateMany({status: true}, {$set: {experience: 1.5}})
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Delete:
+  - syntax: db.COLLECTION_NAME.deleteMany(DELETION_CRITERIA)
+  21. db.simbaCollection.deleteOne({status: false})   ==> deletes first documents in a collection which meets query filter
+  21. db.simbaCollection.deleteMany({status: false})  ==> deletes all documents in a collection which meets query filter
+  22. db.simbaCollection.deleteMany({})               ==> deletes all documents in a collection
+  23. db.collecttion_name.drop()                      ==> delete collection.
+  23. db.dropDatabase()                               ==> delete database.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*** quit(), ctrl+c ***
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# To every CRUD or any operation in MongoDb object of actknowlegement is returned:
+    - { "acknowledged" : true, "insertedId" : ObjectId("61e829a085dfb7c7edfd9d15")} ==> when create
+    - { "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 } ==> when update
+    - { "acknowledged" : true, "deletedCount" : 1 } ==> when delete
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Reference: https://docs.mongodb.com/manual/tutorial/remove-documents/

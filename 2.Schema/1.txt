@@ -1,0 +1,63 @@
+- Schema is the model that defines/represents the data-structure in your database. (structure of document in colletion)
+- Everything in Mongoose starts with a Schema.
+- Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
+
+- Schema helps to write qurey for database.
+
+- Some of Schema approaches we can use in MongoDB:
+    - Schema Less
+    - Flexible Schema
+    - Strict Schema (kind of SQL approach)
+
+- Data structure in MongoDB
+    - Collection:
+        - Document1: {<field1>: <value>, <field2>: <value>, ........}
+        - Document2: {<field1>: <value>, <field2>: <value>, ........}
+
+- Data type of field value:
+    - String, Integer, Boolean, Double, Min/ Max keys, Arrays, Timestamp, Object, Null, Symbol, ISODate,
+    - Object ID, Binary data, Code, Regular expression, ,
+    - Embedded Document, Reference ID
+
+- A field can contain a single value, multiple fields, or multiple elements.
+
+- Approache to model a relationship in MongoDB:
+    - Embedded Approache
+    - Reference Approache(unique_field)
+
+# Post and Comment relation:
+    - Embedded Approache:
+        {
+            status: "Good Morning.",
+            comment: [
+                {text: "Morning"},
+                {text: "Good Morning Sir"},
+            ]
+        }
+
+    - Reference Approache:
+        {
+            status: "Good Morning.",
+            comment: [comment1_id, comment2_id]
+        }
+    - One-to-Many relation.
+
+
+- Reference Approache:
+    - customer collection:
+        {
+            "_id": ObjectId("5f634b34348b034"),
+            "name": "Amir",
+            "age": 22
+        }
+    - sale collection:
+        {
+            "_id": ObjectId("a9jckcw-00000"),
+            "item": "T-shirt",
+            "price": 1800
+            "customer": ObjectId("5f634b34348b034")
+        }
+
+# Reference:
+    - https://www.youtube.com/watch?v=DdvhZj7SsEM
+

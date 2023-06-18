@@ -1,0 +1,91 @@
+# 1.Nested Doc with no _id vs Nested Doc with _id.
+
+    - Collection Nested Doc with no _id.
+        # Collection:
+            {
+                "_id" : ObjectId("61e851249fc3272ba6cd9e59"),
+                "category_name" : "Summer Wear",
+                "product" : [
+                    {
+                        "name" : "Half Pant",
+                        "price" : 350
+                    },
+                    {
+                        "name" : "T-shirt",
+                        "price" : 1250
+                    }
+                ]
+            }
+            {
+                "_id" : ObjectId("61e851509fc3272ba6cd9e5a"),
+                "category_name" : "Winter Wear",
+                "product" : [
+                    {
+                        "name" : "Trouser",
+                        "price" : 1350
+                    },
+                    {
+                        "name" : "North Face Jacket",
+                        "price" : 2250
+                    }
+                ]
+            }
+
+    - Collection Nested Doc with _id.
+        # Collection:
+            {
+                "_id" : ObjectId("61e851249fc3272ba6cd9e59"),
+                "category_name" : "Summer Wear",
+                "product" : [
+                    {
+                        "_id" : ObjectId("61e851249fc3272ba6c234"),
+                        "name" : "Half Pant",
+                        "price" : 350
+                    },
+                    {
+                        "_id" : ObjectId("61e851249fc3272ba6cd923"),
+                        "name" : "T-shirt",
+                        "price" : 1250
+                    }
+                ]
+            }
+            {
+                "_id" : ObjectId("61e851509fc3272ba6cd9e5a"),
+                "category_name" : "Winter Wear",
+                "product" : [
+                    {
+                        "_id" : ObjectId("61e851249fc3272ba6cd9345"),
+                        "name" : "Trouser",
+                        "price" : 1350
+                    },
+                    {
+                        "_id" : ObjectId("61e851249fc3272ba6cd9ewe34"),
+                        "name" : "North Face Jacket",
+                        "price" : 2250
+                    }
+                ]
+            }
+
+# 2. save() vs insertOne().
+    ==> insertOne() allows you to insert a NEW document into a collection. While save() creates a new document by calling the instance of that document, meaning the model/Object that has been created.
+
+# 3. insert() vs insertOne() vs insertMany():
+    - insert(): returns an object that contains the status of the operation.
+    - insertOne(): returns the insert_id of the document inserted.
+    - insertMany(): returns the insert_ids of the documents inserted.
+
+    - db.myTestCollection1.insert({collection_name: "Winter Wear", products: [ {name: "Woolen Trouser", price: 1500}, {name: "Sweater", price: 1750} ]})
+
+# 4. Delete field from document.
+
+# 5. When to use quotes and not to use quotes in MongoDB query?
+
+# 6. await Category.CategoryModel.find(); VS new Category.CategoryModel();
+
+# 7. new Category.CategoryModel(); VS new Category.CategoryModel(username: req.body.username, mobile: req.body.mobile); VS new Category.CategoryModel(username: req.body.username, mobile: req.body.mobile).save();
+
+# 8. Schema.pre('save')
+
+# 9. Subdocuments versus Nested Paths
+
+# 10. 

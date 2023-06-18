@@ -1,0 +1,101 @@
+# Create collection with validation rule:
+   > db.createCollection("myCollectionName", {
+        validator:{
+          $jsonSchema:{
+              bsonType:"object",
+              required:["name", "age"],
+              properties:{
+                name:{
+                  bsonType:"string",
+                  description:"Must be string and required."
+                },
+                age:{
+                  bsonType:"int",
+                  description:"Must be an Integer and required."
+                },
+                graduated:{
+                  bsonType:"bool",
+                  description:"Must be an booelan."
+                }
+              }
+          }
+        }
+      })
+
+# Single line:
+    > db.createCollection("myCollectionName", {validator:{$jsonSchema:{bsonType:"object",required:["name", "age"],properties:{name:{bsonType:"string",description:"Must be string and required."},age:{bsonType:"int",description:"Must be an Integer and required."},graduated:{bsonType:"bool",description:"Must be an booelan."}}}}})
+
+# See rule defined in collection:
+    > db.getCollectionInfos({name:"collection_name"})
+
+    # Output:
+        [
+            {
+                "name" : "cmyCollectionName",
+                "type" : "collection",
+                "options" : {
+                    "validator" : {
+                        "$jsonSchema" : {
+                            "bsonType" : "object",
+                            "required" : [
+                                            "name",
+                                            "age"
+                                        ],
+                            "properties" : {
+                                                "name" : {
+                                                            "bsonType" : "string",
+                                                            "description" : "Must be string and required."
+                                                        },
+                                                "age" : {
+                                                            "bsonType" : "int",
+                                                            "description" : "Must be an Integer and required."
+                                                        },
+                                                "graduated" : {
+                                                            "bsonType" : "bool",
+                                                            "description" : "Must be an booelan."
+                                                        }
+                                        }
+                        }
+                    }
+                },
+                "info" : {
+                            "readOnly" : false,
+                            "uuid" : UUID("be03eb1e-bd7e-4af4-81d5-84e1dad4fb68")
+                        },
+                "idIndex" : {
+                                "v" : 2,
+                                "key" : {
+                                            "_id" : 1
+                                        },
+                                "name" : "_id_"
+                            }
+            }
+        ]
+
+# Output of collection with no pre-defined rule:
+    [
+        {
+            "name" : "Collection_1",
+            "type" : "collection",
+            "options" : {},
+            "info" : {
+                "readOnly" : false,
+                "uuid" : UUID("9ee675d8-e6b4-41a5-86b1-2db99ee3ddba")
+            },
+            "idIndex" : {
+                "v" : 2,
+                "key" : {
+                            "_id" : 1
+                        },
+                "name" : "_id_"
+            }
+        }
+    ]
+
+# Insert document into Validated_Collection.
+    > db.cmyCollctionName.insertOne({name:"Amir",age:22})
+    > db.cmyCollctionName.insertOne({name:"Amir",age:22,graduated:true})
+    > db.cmyCollctionName.insertOne({name:"Amir",age:22,graduated:false,stack:"Mern"})
+    > db.cmyCollctionName.insertOne({name:"Leila"})
+
+# 

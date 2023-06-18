@@ -1,0 +1,4 @@
+# Non-Relation NoSQL Document Oriented Database:
+	- BSON is used to query database.
+	- Database -> Collections -> Documents -> Fields(key: value)
+	- MongoDB  -> []          -> {}        -> field-key: field-value_BSON-datatype;

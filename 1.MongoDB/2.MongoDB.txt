@@ -1,0 +1,23 @@
+# Non-Relation NoSQL Document Oriented Database:
+  - MongoDB is a DBMS that stores schema-less records that can be pulled as JSON documents.
+  - MongoDB is a non-relational, document oriented database management system and works on document based database.
+	- BSON is used to query database.
+  - MongoDB is a schema-less NoSQL document database.
+  - It means you can store JSON documents in it, and the structure of these documents can vary as it is not enforced like SQL databases.
+  - This is one of the advantages of using NoSQL as it speeds up application development and reduces the complexity of deployments.
+
+# Structure of MongoDB:
+	- Database -> Collections -> Documents -> Fields(key: value)
+	- MongoDB  -> []          -> {}        -> field-key: field-value_BSON-datatype;
+
+  - One Database -> Many Collections
+  - One Collection -> Many Documents
+  - One Document -> Many Fields:Key-value pair
+
+  - Instead of tables, a MongoDB database stores its data in collections.
+  - A collection holds one or more BSON documents.
+  - Documents are analogous to records or rows in a relational database table.
+
+# Reference:
+  - https://www.youtube.com/watch?v=XeDM28c5kO4&list=PLwGdqUZWnOp00IbeN0OtL9dmnasipZ9x8&index=40
+  - https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa2QxbHZkRHRSYTZwWHJsUExxcUJBbzNEMWpjd3xBQ3Jtc0tsVVBOOU5sbVhOZDNfVXJteE0wdlFNQ3dvdVJMM3FrRXFDTnAzWE5fZm1IVE5jRm92OEhfNkhKd3lURm5OTVVPZ2p2Njh6TXJuNktSQV83dUc4YWcwa1pwWm92b3B6OXBBVDZtZWZIa3NRaEdRVVhpYw&q=https%3A%2F%2Fwww.educba.com%2Fjson-vs-bson%2F

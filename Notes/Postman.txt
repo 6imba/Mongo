@@ -1,0 +1,8 @@
+- Postman is the software that provides GUI used for creating and testing API.
+- Postman is an interactive and automatic tool for verifying the APIs of your projects.
+- Postman is a Google Chrome app for interacting with HTTP APIs.
+
+- It presents you with a friendly GUI for constructing requests and reading responses.
+- It works on the backend, and makes sure that wach API is working as intended.
+
+- 

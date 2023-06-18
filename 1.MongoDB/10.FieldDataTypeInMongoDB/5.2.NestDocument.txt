@@ -1,0 +1,132 @@
+# Collection:
+    {
+        "_id" : ObjectId("61e851249fc3272ba6cd9e59"),
+        "category_name" : "Summer Wear",
+        "product" : [
+            {
+                "_id" : ObjectId("61e851249fc3272ba6c234"),
+                "name" : "Half Pant",
+                "price" : 350
+            },
+            {
+                "_id" : ObjectId("61e851249fc3272ba6cd923"),
+                "name" : "T-shirt",
+                "price" : 1250
+            }
+        ]
+    }
+    {
+        "_id" : ObjectId("61e851509fc3272ba6cd9e5a"),
+        "category_name" : "Winter Wear",
+        "product" : [
+            {
+                "_id" : ObjectId("61e851249fc3272ba6cd9345"),
+                "name" : "Trouser",
+                "price" : 1350
+            },
+            {
+                "_id" : ObjectId("61e851249fc3272ba6cd9ewe34"),
+                "name" : "North Face Jacket",
+                "price" : 2250
+            }
+        ]
+    }
+
+# Collection:
+    - with two document,
+    - with 2 fields(category_name, product) and 1 default _id fields,
+    - product field of type array, [{consisting nested document},].
+
+# Queries:
+
+    1. Find Document inside NestedDocCollection whose category_name filed value is "Summer Wear":
+        - db.NestedDocCollection.find({category_name: "Summer Wear"}).pretty()
+        - Output:
+            {
+                "_id" : ObjectId("61e851249fc3272ba6cd9e59"),
+                "category_name" : "Summer Wear",
+                "product" : [
+                    {
+                        "name" : "Half Pant",
+                        "price" : 350
+                    },
+                    {
+                        "name" : "T-shirt",
+                        "price" : 1250
+                    }
+                ]
+            }
+    2. Find Document inside NestedDocCollection on the basis of `category_name filed:"product"`
+       and nested `document/object-field "name": "Half Pant"`:
+        - db.NestedDocCollection.find({"product.name": "Half Pant"}).pretty()
+        - Output:
+            {
+                "_id" : ObjectId("61e851249fc3272ba6cd9e59"),
+                "category_name" : "Summer Wear",
+                "product" : [
+                    {
+                        "name" : "Half Pant",
+                        "price" : 350
+                    },
+                    {
+                        "name" : "T-shirt",
+                        "price" : 1250
+                    }
+                ]
+            }
+
+    3. Find Document inside NestedDocCollection on the basis of `category_name filed:"product"`
+       and nested `document/object-field "name": "Half Pant"`
+       and nested `document/object-field "price": 350`:
+        - db.NestedDocCollection.find({product: {"name": "Half Pant", "price": 350}}).pretty()
+        - Output:
+            {
+                "_id" : ObjectId("61e851249fc3272ba6cd9e59"),
+                "category_name" : "Summer Wear",
+                "product" : [
+                    {
+                        "name" : "Half Pant",
+                        "price" : 350
+                    },
+                    {
+                        "name" : "T-shirt",
+                        "price" : 1250
+                    }
+                ]
+            }
+
+    # Note that:
+        - We are doing query on db.NestedDocCollection. All the above queries returns 1st Level|Tier Documents.
+        - Order of document field also matter while applying query.
+
+
+    4. db.getCollection('NestedDocCollection')
+    5. db.getCollection('NestedDocCollection').find()
+    5. db.getCollection('NestedDocCollection').find({}) // here, getCollection() is pre-defined method.
+
+# Pre-defined method in MongoDb:
+    - save()
+    - find()
+    - findOne()
+    - findById()
+    - updateOne()
+    - updateMany()
+    - findByIdAndUpdate()
+    - deleteOne()
+    - deleteMany()
+    - deleteMany({})
+    - insert()
+    - insertOne()
+    - insertMany()
+    - remove()
+    - drop()
+    - aggregate()
+    - getCollection()
+
+# Pre-define operator in MongoDB:
+    - $
+    - $set
+    - $lookup
+
+# Reference:
+    - https://www.youtube.com/watch?v=EkDrO5wF2Wc

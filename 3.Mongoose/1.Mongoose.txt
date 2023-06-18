@@ -1,0 +1,44 @@
+1. Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js.
+    - Mongoose is also known as framework og MongoDB.
+
+2. Mongoose manages relationships between data, provides schema validation, and is used to translate between objects in code 
+and the representation of those objects in MongoDB.
+
+3. Object Mapping between Node and MongoDB is managed via Mongoose.
+    - Object Data Modeling ~ Document Collection Mapper
+
+4. Mongoose is similar to an ORM (Object-Relational Mapper) you would use with a relational database. ... 
+    Mongoose is an ODM that provides a straightforward and schema-based solution to model your application data on top of MongoDB's native drivers.(see img1.jpg)
+
+5. ORM which is to map an object with a relational world, it basically converts data between incompatible types in object oriented programming 
+languages. ... The main difference is that ORM is for MySQL databases, while ODM does the mapping for document representation of data.
+
+6. How to Connect MongoDB with Nodejs:
+    - install the package named: mongoose and add it as dependencies ==> npm install mongoose --save
+
+*************************************************************************************************************************
+
+1. install the package named: mongoose ==> npm install mongoose
+Or to save this package as dependencies: npm install mongoose --save
+
+mongoose: is a package that is used to connect with mongoDB node.js.
+npm: node package manager
+By “package” I mean any piece of code which someone has chosen to publish on npm.
+
+
+*************************************************************************************************************************
+
+
+Two ways to check whether mongoose is install in your ubuntu/debian.
+    a) check locally( means into your project directory within node_modules)
+        For local - npm list mongoose
+    b) check globally( means in your OS within node_modules ).
+        For global check- npm list -g mongoose
+    It will show you the version of mongoose, if it already installed. If not then this will show this-
+    /home//.nvm/versions/node/v6.11.0/lib └── (empty) npm ERR! code 1
+    To install mongoose in ubuntu/debian, run this command in terminal - npm install --save mongoose
+
+
+*************************************************************************************************************************
+
+

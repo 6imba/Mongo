@@ -1,0 +1,23 @@
+
+//2. Connect to mongoDB with this node file using mongoose.
+const mongooseObj1 = require('mongoose')
+mongooseObj1.connect('mongodb://localhost/myDataBase')
+
+
+// // Extra Debug
+// const mongooseObj1 = require('mongoose');
+// setTimeout(() =>{mongooseObj1.connect('mongodb://localhost'); console.log('Connected after 3 second!')}, 3000)
+// console.log('Connection pending for 3 second')
+
+
+console.log(ArticleModel.find() instanceof mongooseObj.Query)
+   // console.log(Object.keys(ArticleModel.find()));
+    // console.log(ArticleModel.find().mongooseCollection);
+    // console.log(Object.keys(ArticleModel.find().mongooseCollection));
+    // console.log(ArticleModel.find().mongooseCollection.collectionName);
+    // res.render('articlesViewFolder/index', {articles: articles})
+    const articles = ArticleModel.find({title: "hi"});
+
+
+
+- console.log(require('mongoose').model('ArticleModelClass', articleSchema).find())

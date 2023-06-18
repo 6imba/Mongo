@@ -1,0 +1,44 @@
+Q. How do I search for an object by its ObjectId in the mongo console?
+    - In Mongo shell:
+        - db.categorycollections.find({"_id": ObjectId("61e6a197143ed909f1e3c0e6")})
+        - db.categorycollections.find({_id: ObjectId("61e6a197143ed909f1e3c0e6")})
+        - db.categorycollections.find(ObjectId("61e6a197143ed909f1e3c0e6"))
+
+Q. I wrote the answer if you are using mongodb using node.js.
+    - You don't need to convert the id into an ObjectId. Just use :
+        - db.collection.findById('4ecbe7f9e8c1c9092c000027');
+    - this collection method/operator will automatically convert id into ObjectId.
+
+    - On the other hand :
+        - db.collection.findOne({"_id":'4ecbe7f9e8c1c9092c000027'})
+        - doesn't work as expected.
+        - You've manually convert id into ObjectId.
+
+        - That can be done like this :
+            var ObjectId = require('mongodb').ObjectId;
+            var c_id = req.params.cid; | var c_id = "1e2334w872f289123";
+            var cOid = new ObjectId(c_id);
+            db.categorycollections.find({_id: cOid})
+
+Q. Finding document using document _id.
+
+    - In Mongo Shell:
+        - db.categorycollections.find({ "products._id": ObjectId("61e90cf8e9cb03816880671e")}) ==> find document on the basis of document _id.
+
+    - In Node.js:
+        - Category.CategoryModel.find({_id: "61e90ccde9cb038168806703"}); find document on the basis of document _id.
+
+
+Q. Finding document using _id of nested document.
+
+    - In Mongo Shell:
+        - db.categorycollections.find({ "products._id": ObjectId("61e90cf8e9cb03816880671e")}) ==> find document on the basis of nested_document _id.
+
+    - In Node.js:
+        - Category.CategoryModel.find({"categorycollections.products._id": "61e90cf8e9cb03816880671e"}); find document on the basis of nested_document _id.
+            * const doc = parent.children.id(_id);
+
+    - Category.CategoryModel.findOne({_id: cid, "categorycollections.products._id": pid });
+
+
+- https://stackoverflow.com/questions/21142524/mongodb-mongoose-how-to-find-subdocument-in-found-document

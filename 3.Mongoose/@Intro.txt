@@ -1,0 +1,8 @@
+- Connect ExpressJS app with MongoDB.
+- If we try to connect Connect ExpressJS app with MongoDB from scratch it quit complicated.
+- So here comes the Mongoose.
+- Mongoose is a JavaScript object-oriented programming library.
+- Mongoose helps to create a connection between MongoDB and the Express web application framework.
+- Mongoose is ODM library for MongoDB.
+- Mongoose manages relationship between data, provides schema validation, object mapping into MongoDB.
+- 

@@ -1,0 +1,21 @@
+- Install mongoose package
+- Import mongoose and Instanciating mongoose object.
+- Connecting to MongoDB using Mongoose.
+- Defining Mongoose Schema.
+- Declaring Mongoose model.
+- Instanciating Mongoose Model's Object to perform CRUD operation.
+
+************************************************************************************************
+
+- const mongooseObj = require('mongoose') ==> Import mongoose and Instanciating mongoose object.
+
+- mongooseObj.connect('mongodb://localhost/myDataBase') ==> Connecting to MongoDB using Mongoose.
+
+- const mongooseSchema = new mongooseObj.Schema({key: structure, key: structure, ...}) ==> Defining Mongoose Schema.
+
+- const MongooseModel = new mongooseObj.model("CollectionName", mongooseSchema); ==> Declaring Mongoose model.
+
+- const user = new MongooseModel({a:1,b:2,c:3}#document_object) ==> Instanciating Mongoose Model's Object to perform CRUD(create) operation. (need to save() when create)
+- const user = MongooseModel.findOne({<filter_query>}, {<operational_value>}) ==> Instanciating Mongoose Model's Object to perform CRUD(retrieve) operation.
+
+- 
