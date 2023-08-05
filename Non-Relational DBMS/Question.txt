@@ -1,0 +1,17 @@
+Q. If Nosql is schema less why do we have schema in mongoose?
+	- When people say that MongoDB “has no schema”, they really mean that it does not enforce schema the way SQL databases do.
+	- MongoDB pushes schema concerns up to your application level, where you can handle them more flexibly.
+	- https://stackoverflow.com/questions/13107976/why-does-mongoose-use-schema-when-mongodbs-benefit-is-supposed-to-be-that-its
+	- https://www.mongodb.com/unstructured-data/schemaless
+
+Q. Questions to Answer Before Choosing a Database?
+	- What type of data will you be analyzing?
+	- How much data are you dealing with?
+	- What kind of resources can you devote to the setup and maintenance of your database?
+	- Do you need real-time data?
+
+- Reference: https://www.logianalytics.com/relational-vs-non-relational-databases/
+
+Q. JSON VS BSON.
+Q. what to prefer: Vertical Scaleing & Horizetal Scaleing.
+Q. Database vs Datawarehouse.
