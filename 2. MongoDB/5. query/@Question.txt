@@ -1,3 +1,0 @@
-> db.Collection_1.insertOne({LCID:017000502, name:"Amir", stack:"MERN"})
-    ==> { "_id" : ObjectId("6253d291d8969f3d36b5d353"), "LCID" : 3932482, "name" : "Amir", "stack" : "MERN" }
-        - value of LCID is ulter when start from 0.

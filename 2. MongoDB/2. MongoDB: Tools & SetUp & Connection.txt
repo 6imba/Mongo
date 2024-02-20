@@ -7,6 +7,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # SetUp mongo tools:
+    - download or use docker
     - when you download MongoDB, it downloads some of MongoDB tools(Compass & Shell) with it.
     - Download MongoDB: https://www.mongodb.com/try/download/community and then Install it.
     - download mongdb community ==> https://www.mongodb.com/try/download/community
