@@ -1,9 +1,0 @@
-# Sub-Types of Non-Relational/NoSQL Databases:
-	1. Document-oriented databases: (DBMS: MongoDB, DynamoDB and CosmosDB)
-	2. Key-Value Stores: (DBMS: Redis, AWS DynamoDB, Riak)
-	3. Wide-Column Stores,
-	4. Graph Stores: (DBMS: Neo4J)
-
-# NoSQL DB on the basis of where its hosted:
-	1. Cloud: (DBMS ==> AWS DynamoDB, Goggle Cloud BigTable, Azure CosmosDB)
-	2. Self-Hosted: (DBMS ==> MongoDB, cassandra, SCYLA, CouchDB)

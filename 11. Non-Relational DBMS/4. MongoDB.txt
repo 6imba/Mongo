@@ -1,5 +1,0 @@
-- MongoDB is a DBMS that stores schema-less records that can be pulled as JSON documents.
-- MongoDB is a non-relational, document oriented database management system and works on document based database.
-
-Q. data model
-

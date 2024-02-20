@@ -1,0 +1,21 @@
+[
+  {
+    "id": "family_1",
+    "products": [
+      {
+        "id": "product_a_1"
+      },
+      {
+        "id": "product_a_2"
+      }
+    ]
+  },
+  {
+    "id": "family_2",
+    "products": [
+      {
+        "id": "product_b_1"
+      }
+    ]
+  }
+]

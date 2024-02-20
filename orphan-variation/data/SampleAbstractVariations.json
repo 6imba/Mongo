@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "65cf110c129c4bd61f6bd62c"
+  },
+  "id": "variation_a_1",
+  "productId": "product_a_1",
+  "familyId": "family_1"
+},
+{
+  "_id": {
+    "$oid": "65cf110c129c4bd61f6bd62d"
+  },
+  "id": "variation_a_2",
+  "productId": "product_a_2",
+  "familyId": "family_1"
+},
+{
+  "_id": {
+    "$oid": "65cf110c129c4bd61f6bd62e"
+  },
+  "id": "variation_a_3",
+  "productId": "product_a_3",
+  "familyId": "family_1"
+},
+{
+  "_id": {
+    "$oid": "65cf110c129c4bd61f6bd62f"
+  },
+  "id": "variation_b_1",
+  "productId": "product_b_1",
+  "familyId": "family_2"
+},
+{
+  "_id": {
+    "$oid": "65cf110c129c4bd61f6bd630"
+  },
+  "id": "variation_b_2",
+  "productId": "product_b_2",
+  "familyId": "family_2"
+},
+{
+  "_id": {
+    "$oid": "65cf110c129c4bd61f6bd631"
+  },
+  "id": "variation_b_3",
+  "productId": "product_b_3",
+  "familyId": "family_2"
+},
+{
+  "_id": {
+    "$oid": "65cf110c129c4bd61f6bd632"
+  },
+  "id": "variation_b_4",
+  "productId": "product_b_4",
+  "familyId": "family_2"
+},
+{
+  "_id": {
+    "$oid": "65d247d54fd18cb164f47f0c"
+  },
+  "id": "variation_b_6",
+  "productId": "product_b_6",
+  "familyId": "family_2"
+},
+{
+  "_id": {
+    "$oid": "65d247f14fd18cb164f47f0d"
+  },
+  "id": "variation_b_6",
+  "productId": "product_b_6",
+  "familyId": "family_3"
+}]

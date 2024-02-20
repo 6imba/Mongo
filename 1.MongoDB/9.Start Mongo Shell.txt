@@ -1,4 +1,0 @@
-> mongo
-> mongod
-> mongos
-> mongosh

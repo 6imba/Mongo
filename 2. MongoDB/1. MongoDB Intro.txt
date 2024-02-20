@@ -5,6 +5,7 @@
   - MongoDB is a schema-less NoSQL document database.
   - It means you can store JSON documents in it, and the structure of these documents can vary as it is not enforced like SQL databases.
   - This is one of the advantages of using NoSQL as it speeds up application development and reduces the complexity of deployments.
+  - MongoDB is a NoSQL databases that uses NoSQL_querying_approach(BSON) base on Document-oriented structue which is self-hosted.
 
 # Structure of MongoDB:
 	- Database -> Collections -> Documents -> Fields(key: value)
@@ -21,3 +22,7 @@
 # Reference:
   - https://www.youtube.com/watch?v=XeDM28c5kO4&list=PLwGdqUZWnOp00IbeN0OtL9dmnasipZ9x8&index=40
   - https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa2QxbHZkRHRSYTZwWHJsUExxcUJBbzNEMWpjd3xBQ3Jtc0tsVVBOOU5sbVhOZDNfVXJteE0wdlFNQ3dvdVJMM3FrRXFDTnAzWE5fZm1IVE5jRm92OEhfNkhKd3lURm5OTVVPZ2p2Njh6TXJuNktSQV83dUc4YWcwa1pwWm92b3B6OXBBVDZtZWZIa3NRaEdRVVhpYw&q=https%3A%2F%2Fwww.educba.com%2Fjson-vs-bson%2F
+
+
+# Question:
+  Q. data model?

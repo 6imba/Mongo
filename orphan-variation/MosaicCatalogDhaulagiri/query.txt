@@ -1,0 +1,34 @@
+db.Variations.aggregate([
+  {
+    $lookup: {
+      from: "FamilyProducts",
+      let: { familyId: "$familyId", productId: "$productId" },
+      pipeline: [
+        {
+          $match: {
+            $expr: {
+              $and: [
+                { $eq: ["$id", "$$familyId"] },
+                { $in: ["$$productId", "$products.id"] }
+              ]
+            }
+          }
+        }
+      ],
+      as: "familyProducts"
+    }
+  },
+  {
+    $match: {
+      "familyProducts.0": { $exists: false } // Keep variations where there is no matching familyId or productId in FamilyProducts.products.id
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      id: 1,
+      productId: 1,
+      familyId: 1
+    }
+  }
+]);

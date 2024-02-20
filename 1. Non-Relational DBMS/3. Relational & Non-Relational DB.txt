@@ -27,6 +27,6 @@
 		- Easily Scalable,
 		- No relation
 
-# RDBMS : 	Database -> Table      -> Records/Row 	   -> Column  		=====> Row-oriented
+# RDBMS : 	    Database -> Table      -> Records/Row 	   -> Column  		    =====> Row-oriented
 # NoSQL_DBMS: 	Database -> Collection -> Records/Document -> Field(key: value) =====> Document-Orinted
 

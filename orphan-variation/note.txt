@@ -1,0 +1,250 @@
+# Collection with required associated fields.
+    find ==>
+        FamilyProducts ==> Project: {id:1, "products.id": 1 }
+        Variations ==> Project: {id:1, familyId:1, productId:1}
+
+# Get orphan variation:
+    Variations ==>
+        aggregate ==>
+            $lookup ==>
+                {
+                    from: "FamilyProducts",
+                    let: { familyIdVar: "$familyId", idVar: "$id" },
+                    pipeline: [
+                        {
+                        $match: {
+                            $expr: {
+                            $and: [
+                                { $eq: ["$$familyIdVar", "$id"] },
+                                { $not: { $in: ["$$idVar", "$products.id"] } }
+                            ]
+                            }
+                        }
+                        }
+                    ],
+                    as: "matchingDocuments"
+                }
+
+
+
+
+
+Mongo Collection A:
+[{
+  "id": "840",
+  "products": [
+    {
+      "id": "170684"
+    }
+  ]
+},
+{
+  "id": "846",
+  "products": [
+    {
+      "id": "661295"
+    },
+    {
+      "id": "661295"
+    },
+  ]
+}]
+
+Mongo Collection B:
+[{
+  "id": "170548",
+  "familyId": "832",
+  "productId": "170547"
+},
+{
+  "id": "170682",
+  "familyId": "839",
+  "productId": "170681"
+}]
+Above we have collection A and collection B, what I want is the query to get documents of collection B, where the "id" key of the document of collection B is not present in  the associated(with familyId of collection B) document's product array object.
+ChatGPT
+To retrieve documents from Collection B where the "id" key in Collection B is not present in the associated (with familyId of Collection B) document's product array object in Collection A, you can use the $lookup aggregation stage with the $match and $expr operators. Here's the query:
+
+db.Variations.aggregate([
+  {
+    $lookup: {
+      from: "FamilyProducts",
+      let: { familyIdVar: "$familyId", idVar: "$id" },
+      pipeline: [
+        {
+          $match: {
+            $expr: {
+              $and: [
+                { $eq: ["$$familyIdVar", "$id"] },
+                { $not: { $in: ["$$idVar", "$products.id"] } }
+              ]
+            }
+          }
+        }
+      ],
+      as: "matchingDocuments"
+    }
+  },
+  {
+    $match: {
+      matchingDocuments: { $eq: [] } // Filter documents where no match is found in Collection A
+    }
+  }
+])
+
+Explanation of the pipeline stages:
+
+$lookup: Performs a left outer join between Collection B and a sub-pipeline on Collection A. The sub-pipeline uses the $match and $expr operators to filter documents where the "id" key in Collection B is not present in the associated document's product array in Collection A.
+
+$match: Filters the results to include only the documents where no match is found in Collection A (matchingDocuments array is empty).
+
+This query assumes that familyId in Collection B corresponds to the id in Collection A, and id in Collection B corresponds to the products.id in Collection A.
+
+Adjust the collection names and field names as needed based on your actual schema.
+
+
+
+
+
+db.CollectionVariations.aggregate([
+  {
+    $lookup: {
+      from: "CollectionFamilyProducts",
+      localField: "familyId",
+      foreignField: "id",
+      as: "family"
+    }
+  },
+  {
+    $match: {
+      "family.products": { $exists: false }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      id: 1,
+      productId: 1,
+      familyId: 1
+    }
+  }
+])
+
+
+
+
+db.CollectionVariations.aggregate([
+  {
+    $lookup: {
+      from: "CollectionFamilyProducts",
+      localField: "familyId",
+      foreignField: "id",
+      as: "family"
+    }
+  },
+  {
+    $match: {
+      $expr: {
+        $eq: ["$family", []]
+      }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      id: 1,
+      productId: 1,
+      familyId: 1
+    }
+  }
+])
+
+
+
+# Edit
+  - rename database name:
+  
+  - rename colection name:
+    use TestDhaDB
+    db.FamilyVariations.renameCollection('FamilyProducts')
+
+
+
+
+
+
+
+
+db.Variations.aggregate([
+  {
+    $lookup: {
+      from: "FamilyProducts",
+      let: { familyId: "$familyId", productId: "$productId" },
+      pipeline: [
+        {
+          $match: {
+            $expr: {
+              $and: [
+                { $eq: ["$id", "$$familyId"] },
+                { $not: { $in: ["$$productId", "$products.id"] } }
+              ]
+            }
+          }
+        }
+      ],
+      as: "familyProducts"
+    }
+  },
+  {
+    $match: {
+      familyProducts: { $ne: [] } // Keep only variations with non-empty familyProducts (productId not in FamilyProducts.products.id)
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      id: 1,
+      productId: 1,
+      familyId: 1
+    }
+  }
+]);
+
+
+
+
+
+db.Variations.aggregate([
+  {
+    $lookup: {
+      from: "FamilyProducts",
+      let: { familyId: "$familyId", productId: "$productId" },
+      pipeline: [
+        {
+          $match: {
+            $expr: {
+              $and: [
+                { $eq: ["$id", "$$familyId"] },
+                { $in: ["$$productId", "$products.id"] }
+              ]
+            }
+          }
+        }
+      ],
+      as: "familyProducts"
+    }
+  },
+  {
+    $match: {
+      "familyProducts.0": { $exists: false } // Keep variations where there is no matching familyId or productId in FamilyProducts.products.id
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      id: 1,
+      productId: 1,
+      familyId: 1
+    }
+  }
+]);

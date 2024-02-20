@@ -1,0 +1,123 @@
+# Tools via whick we work with MongoDB
+    - MongoDB GUI: Mongo Compass
+    - MongoDB CLI: Mongo Shell(mongo, mongod, mongos, mongosh)
+    - MongoDB ODM: mongoose library
+    
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# SetUp mongo tools:
+    - when you download MongoDB, it downloads some of MongoDB tools(Compass & Shell) with it.
+    - Download MongoDB: https://www.mongodb.com/try/download/community and then Install it.
+    - download mongdb community ==> https://www.mongodb.com/try/download/community
+    - download mongodb Shell ==> https://www.mongodb.com/try/download/shell
+
+    ---------------------------------------------------------
+
+    # MongoDB Compass GUI:
+        > Run MongoDB Compass:
+            1. Open MongoDB Compass,
+            2. Click on Fill in connection fields Individually,
+            3. Press Connect,
+            4. Here come your MongoDB Compass DashBoard.
+
+    ---------------------------------------------------------
+
+    # MongoDB Shell CLI:
+
+    # Directory of installed in MongoDB:
+        > C:\Program Files\MongoDB\
+        > C:\Program Files\MongoDB\Server\5.0\
+            - Data Directory: C:\Program Files\MongoDB\Server\5.0\data\
+            - Log Directory: C:\Program Files\MongoDB\Server\5.0\log\
+            - Bin Directory: C:\Program Files\MongoDB\Server\5.0\bin
+
+    # Run NoSQL either in MongoDB Shell or in MongoDB Compass.
+
+    3. Run Mongo:
+        * Open/Run mongo.exe file in:
+            - "C:\Program Files\MongoDB\Server\5.0\bin\mongo.exe"
+
+    # Shell:
+        4. Version Checking:
+            > mongo --version
+
+        5. Here to run Mongo by: "C:\Program Files\MongoDB\Server\5.0\bin\mongo.exe" is too anoyoning.
+        # So let run mongo just by mongo keyword:
+            - Sytem Properties
+            - Environment Variables
+            - User varibables for SimbA
+            - Path
+            - Edit
+            - New
+            - C:\Program Files\MongoDB\Server\5.0\bin ==> paste
+            - ok ok ok
+            # variable path setted.
+
+        6. Open new CMD terminal and Run Mongo:
+            > mongo
+            > mongo --version
+            > mongod --version
+            - boom....................
+            mongod
+            > mongod --version
+            > mongo show dbs
+
+        # open cmd:
+            > mongod
+            > mongod --version
+            > mongo show dbs
+
+        # save mongodb database data into: C:\data\db
+        # open mongodb shell: C:\mongosh  aka mongodb shell\bin\mongosh.exe
+    
+        1> Run Mongo Shell directing to "C:\Program Files\MongoDB\Server\5.0\bin\mongo.exe".
+            OR, if running Mongo by: "C:\Program Files\MongoDB\Server\5.0\bin\mongo.exe" is too anoyoning.
+
+        2> Set path of "C:\Program Files\MongoDB\Server\5.0\bin\mongo.exe" as enviroment_variable & Run MongoDB Shell via Command_Prompt:
+            1. Command Prompt: > mongo
+
+            # Set path as enviroment_variable:
+                - Sytem Properties
+                - Environment Variables
+                - User varibables for SimbA
+                - Path
+                - Edit
+                - New
+                - C:\Program Files\MongoDB\Server\5.0\bin ==> paste
+                - ok ok ok
+                > ariable path setted.
+
+        > start MongoDB shell via cmd: mongo
+        > exit MongoDB shel: quit()
+    ---------------------------------------------------------
+    
+    # MongoDB ODM:
+        $ npm install mongoose
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Connect Tools to hosted DB:
+    - MongoDB GUI: Connection via Mongo Compass
+    - MongoDB CLI: Connection via Mongo Shell(mongo, mongod, mongos, mongosh)
+    - MongoDB ODM: Connection via mongoose library
+    
+    ---------------------------------------------------------
+
+    - mongodb -> connection  -> mongo shell CLI(query)
+    - mongodb -> connection  -> mongo compass GUI
+    - mongodb -> connection  -> node(query)
+    - mongodb -> database-drivers  -> node(query)
+    - mongodb -> ORM/ODMlibrary  -> node(query)
+    - mongodb -> mongoose(connection):ODM(Object Data Modelling)  -> node(query)
+
+    - node -> mongoose -> mongo_driver -> mongoDB
+    - node <-> object_mapping <-> mongoDB
+    - node <-> connection <-> mongoDB
+
+    - relation between data
+    - schema validation
+    - code_object and database_document mapping
+
+    > npm init -y
+    > npm i mongoose

@@ -1,0 +1,62 @@
+- create database ==>
+	$ use databasename: open/activate/switched given database if exist and create and open/activate/switched given database if not exist 
+- show list of database==>
+	$ show dbs: only databases who atleast has one document in any collection.
+- create collection ==>
+	# Syntax: > db.collection_name.insertOne(bson_document)
+	# Example: > db.user.insertOne({name:"Amir Shrestha",faculty:"BIT",age:22,male:true})
+	# Note:
+		- here db means active database.
+		- respose: { "acknowledged" : true, "insertedId": ObjectId("234nnlhjh45j233")}
+		- automatic id generated(acts as pk in relational database).
+- show active database ==>
+	$ db
+- show collections inside active database ==>
+	$ show collections
+- show documents inside collection ==>
+	$ db.collection_name_1.find()
+	$ db.collection_name_2.find()
+	$ db.collection_name.find().pretty()
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- insert document in collection:
+	> db.collection_name.insertOne(bson_document)
+	# bson_document ==> {field_1: value, field_2: value, field_1: value}
+	
+	> db.collection_name.insertMany(array_of_multiple_bson_document)
+	# array_of_multiple_bson_document ==> [{field_1: value, field_2: value},{field_1: value},{field_1: value, field_2: value, field_1: value}]
+	
+	# Note:
+		- respose: { "acknowledged" : true, "insertedId": ObjectId("234nnlhjh45j233"),ObjectId("234nnlhjh45j233"),ObjectId("234nnlhjh45j233")}
+		
+- read documents in collection:
+	# syntax: db.collection_name.find(query,projection)
+	# query:
+	# projection:
+
+	> db.collection_name_1.find()
+	> db.collection_name_1.find({name:"Amir"}) //case-sensative
+	> db.collection_name_1.find({name:"Amir"}, {name:1,course:1})
+	> db.collection_name_1.find({name:"Amir"}, {name:0,course:0})
+	> db.collection_name_1.find({name:"Amir"}, {_id:0,name:1,course:1})
+	> db.collection_name_1.findOne({gender:"male"})
+	> db.collection_name_1.find({gender:"male"}).limit(1)
+	> db.collection_name_1.find({gender:"male"}).limit(2)
+	> db.collection_name_1.find({gender:"male"}).limit(1).skip(1)
+	> db.collection_name_1.find({gender:"male"}).limit(1).skip(2)
+
+- update document in collection:
+	# Syntax: db.collection_name_1.updateOne(<filter>,<update_value>)
+	> db.collection_name_1.updateOne({name:"Amir"}, {$set: {age: 23, voice: "deep"} })
+	> db.collection_name_1.updateMany({role:"developer"}, {$set: {salary: 100000} })
+	> db.collection_name_1.updateMany({role:"developer"}, {$set: {salary:salary + 25%} })
+
+- delete document in collection:
+	# db.collection_name_1.deleteMany(<critteria>)
+	> db.collection_name_1.deleteMany({age: 18})
+	> db.collection_name_1.deleteMany() #delete all document
+	> db.collection_name_1.remomve({age: 18}) #deprecated
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

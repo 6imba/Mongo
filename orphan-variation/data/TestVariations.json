@@ -1,0 +1,42 @@
+[
+  {
+    "id": "variation_a_1",
+    "productId": "product_a_1",
+    "familyId": "family_1"
+  },
+  {
+    "id": "variation_a_2",
+    "productId": "product_a_2",
+    "familyId": "family_1"
+  },
+  {
+    "id": "variation_a_3",
+    "productId": "product_a_3",
+    "familyId": "family_1"
+  },
+  {
+    "id": "variation_b_1",
+    "productId": "product_b_1",
+    "familyId": "family_2"
+  },
+  {
+    "id": "variation_b_2",
+    "productId": "product_b_2",
+    "familyId": "family_2"
+  },
+  {
+    "id": "variation_b_3",
+    "productId": "product_b_3",
+    "familyId": "family_2"
+  },
+  {
+    "id": "variation_b_4",
+    "productId": "product_b_4",
+    "familyId": "family_2"
+  },
+  {
+    "id": "variation_b_4",
+    "productId": "product_b_4",
+    "familyId": "family_3"
+  }
+]

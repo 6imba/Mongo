@@ -24,7 +24,7 @@
 
 # Use cases include shopping carts, user preferences, and user profiles.
 
-# NoSQL language/approach is used by NoSQL-DBMS to manage Non-Relation_Database.
+# NoSQL language/approach/querying is used by NoSQL-DBMS to manage Non-Relation_Database.
 
 # Reference:
 	- https://www.guru99.com/nosql-tutorial.html
@@ -34,4 +34,3 @@
 
 # Development & DB code is same.
 # Good for CMS & Vedio platform.
-

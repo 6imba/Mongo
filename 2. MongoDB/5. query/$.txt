@@ -1,0 +1,11 @@
+$match
+$expr
+$gt
+$lt
+$gte
+$eq
+$exists
+$not
+$in
+$and
+$sum
